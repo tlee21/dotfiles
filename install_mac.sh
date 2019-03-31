@@ -49,6 +49,9 @@ git config --global alias.br branch
 git config --global alias.com commit
 git config --global alias.st status
 
-echo "!! Terminals Must Now Be set to 'MesloLGM Nerd Font' in order to properly display Powerline fonts for Powerlevel9K"
-echo ""
-echo "!! VS Code settings.json must be copied over once vscode is installed!"
+# echo "!! Terminals Must Now Be set to 'MesloLGM Nerd Font' in order to properly display Powerline fonts for Powerlevel9K"
+
+cp vscode/* $HOME/Library/Application Support/Code/User/settings.json
+
+# install nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | zsh 

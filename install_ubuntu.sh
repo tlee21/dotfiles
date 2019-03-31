@@ -4,12 +4,10 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # install 
-# nvm
 # npm
-# zsh
 
-#hub
-#shfmt
+# hub
+# shfmt
 # kubectx
 # install base packages
 
@@ -23,6 +21,7 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
 
+#curl -fL https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
 
 # install golang debugger
 go get -u github.com/derekparker/delve/cmd/dlv
@@ -62,6 +61,8 @@ git config --global alias.br branch
 git config --global alias.com commit
 git config --global alias.st status
 
-echo "!! Terminals Must Now Be set to 'MesloLGM Nerd Font' in order to properly display Powerline fonts for Powerlevel9K"
-echo ""
-echo "!! VS Code settings.json must be copied over once vscode is installed!"
+# Copy vs code settings
+cp vscode/* $HOME/.config/Code/User/
+
+# install nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | zsh 
