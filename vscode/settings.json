@@ -1,7 +1,8 @@
 {
     "terminal.integrated.shell.osx": "zsh",
-    "terminal.integrated.fontFamily": "'Ubuntu Mono', 'PowerlineSymbols'",
-    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
+    "terminal.integrated.fontSize": 12,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
+    "zenMode.hideLineNumbers": false,
 }

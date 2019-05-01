@@ -1,23 +1,27 @@
 #!/bin/bash
 
 # install homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-# install base packages
-brew install go zsh zsh-completions kubectx hub shfmt
-mkdir -p ~/go/bin
+if ! which brew >/dev/null 2>&1; then
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
 # install rust
-curl https://sh.rustup.rs -sSf | sh
-# ios
+if ! which rustup >/dev/null 2>&1; then
+	curl https://sh.rustup.rs -sSf | sh -s -- -y
+	source ~/.cargo/env
+	rustup default stable
+else
+	rustup update
+fi
+
+# Rust toolchains and commands
+rustup component add clippy
 rustup target add aarch64-apple-ios armv7-apple-ios armv7s-apple-ios x86_64-apple-ios i386-apple-ios
-# android
 rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android
-# wasm
 rustup target add wasm32-unknown-unknown
 
-# install golang debugger
-go get -u github.com/derekparker/delve/cmd/dlv
+# install environment tools and languages
+brew install zsh zsh-completions kubectx hub shfmt go emacs
 
 # install and setup antibody
 brew install getantibody/tap/antibody
@@ -29,14 +33,19 @@ brew tap sambadevi/powerlevel9k
 brew install powerlevel9k
 brew tap caskroom/fonts
 brew cask install font-meslo-nerd-font
+brew cask install iterm2
+brew cask install visual-studio-code
+
+# copy vscode settings
+mkdir -p ~/Library/Application\ Support/Code/User
+cp vscode/* ~/Library/Application\ Support/Code/User/
 
 # set default shell to zsh
 zsh --version
-chsh -s $(which zsh)
 
 # merge our zshrc contents if one already exists, otherwise just copy it over
 if [ -f ~/.zshrc ]; then
-    echo "=== Merging .zshrc Files (MIGHT REQUIRE MANUAL CLEANUP!)==="
+    echo "=== Merging .zshrc Files (MIGHT REQUIRE MANUAL CLEANUP!) ==="
     cat .zshrc | cat - ~/.zshrc > temp && rm ~/.zshrc && mv temp ~/.zshrc
 else
     echo "=== Copying .zshrc File ==="
@@ -48,10 +57,6 @@ git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.com commit
 git config --global alias.st status
+git config --global credential.helper 'cache --timeout 604800'
 
-# echo "!! Terminals Must Now Be set to 'MesloLGM Nerd Font' in order to properly display Powerline fonts for Powerlevel9K"
-
-cp vscode/* $HOME/Library/Application Support/Code/User/settings.json
-
-# install nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | zsh 
+echo "!! Terminal Apps need 'MesloLGM Nerd Font' in order to properly display Powerline Fonts"
