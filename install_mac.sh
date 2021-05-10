@@ -21,7 +21,7 @@ rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-andro
 rustup target add wasm32-unknown-unknown
 
 # install environment tools and languages
-brew install zsh zsh-completions kubectx hub shfmt go emacs
+brew install zsh zsh-completions kubectx hub shfmt go emacs nvm
 
 # install and setup antibody
 brew install getantibody/tap/antibody
@@ -31,10 +31,10 @@ antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 # install powerlevel9k and nerdfonts
 brew tap sambadevi/powerlevel9k
 brew install powerlevel9k
-brew tap caskroom/fonts
-brew cask install font-meslo-nerd-font
-brew cask install iterm2
-brew cask install visual-studio-code
+brew tap homebrew/cask-fonts
+brew install --cask font-meslo-nerd-font
+brew install --cask iterm2
+brew install --cask visual-studio-code
 
 # copy vscode settings
 mkdir -p ~/Library/Application\ Support/Code/User
