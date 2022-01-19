@@ -220,5 +220,14 @@
     {
         "key": "cmd+q",
         "command": "-workbench.action.quit"
-    }
+    },
+    {
+        "key": "ctrl+x m",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "ctrl+x",
+        "when": "terminalFocus"
+    },
 ]
