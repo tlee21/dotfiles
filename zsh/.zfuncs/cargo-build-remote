@@ -1,0 +1,1 @@
+cargo remote -h -c x86_64-unknown-linux-gnu/release/${1:?"Missing Copyback File"} -- build --release --target x86_64-unknown-linux-gnu

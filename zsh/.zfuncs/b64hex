@@ -1,0 +1,2 @@
+param=${1:?"Missing Base64 Parameter"}
+echo -n "${param}" | base64 -d | hexdump -v -e '/1 "%02x" ' | awk '{printf "0x"$1}'

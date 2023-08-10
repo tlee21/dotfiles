@@ -1,6 +1,0 @@
-#oh-my-zsh plugins
-robbyrussell/oh-my-zsh
-robbyrussell/oh-my-zsh path:plugins/git
-robbyrussell/oh-my-zsh path:plugins/docker
-robbyrussell/oh-my-zsh path:plugins/jsontools
-robbyrussell/oh-my-zsh path:plugins/macos

@@ -1,0 +1,4 @@
+cd ~/Projects/aetheras-io/agence
+mkdir -p ./target/x86_64-unknown-linux-gnu || true
+scp -C c.aetheras.io:~/Projects/aetheras-io/agence/target/x86_64-unknown-linux-gnu/release/agence ./target/x86_64-unknown-linux-gnu/release/
+scp -C c.aetheras.io:~/Projects/aetheras-io/agence/target/x86_64-unknown-linux-gnu/release/agencescan ./target/x86_64-unknown-linux-gnu/release/
