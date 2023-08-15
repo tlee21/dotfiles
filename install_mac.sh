@@ -8,12 +8,12 @@ main() {
     get_arch
     ARCH="$RETVAL"
 
-    setup_git
-    install_homebrew
-    install_languages
+    # setup_git
+    # install_homebrew
+    # install_languages
     install_shell
-    install_terminal
-    install_tools
+    # install_terminal
+    # install_tools
     # #NOTE terminal installation needs to be partially manual until alacritty is updated in homebrew for M1's 
 }
 
@@ -89,6 +89,7 @@ install_shell() {
     sym_link $ROOT_PATH/zsh/.zshrc ~/.zshrc
     sym_link $ROOT_PATH/zsh/.zfuncs ~/.zfuncs
     sym_link $ROOT_PATH/zsh/.zcustom ~/.zcustom
+    sym_link $ROOT_PATH/zsh/.p10k.zsh ~/.p10k.zsh
 }
 
 install_terminal() {
@@ -120,13 +121,17 @@ install_neovim() {
 }
 
 install_tools() {
-    # brew tap kdash-rs/kdash
+    brew tap kdash-rs/kdash
+    brew tap hashicorp/tap
+
     brew install \
-        ripgrep fzf fd rg bat exa zoxide jq grex \
+        ripgrep fzf fd rg bat exa zoxide jq grex hashicorp/tap/vault \
         zellij just \
         protobuf helm gh libpq google-cloud-sdk visual-studio-code \
-        kubectl kubectx kdash || true
+        kubectl kubectx || true
     
+    brew install --cask rectangle
+
     # # install google cloud components
     # gcloud components install gke-gcloud-auth-plugin
     #
